@@ -6,6 +6,10 @@ body {
   h1 {
       color: red;
     }
+
+   h2 {
+      color: pink;
+    }
   
   img.bookcover {
     height: 200px;

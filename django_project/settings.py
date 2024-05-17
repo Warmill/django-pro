@@ -30,7 +30,7 @@ INTERNAL_IPS = ['127.0.0.1']
 SECRET_KEY = 'django-insecure-%^6q!i%mvnh6i&-f$&2#art-udq^3st99oj8!gij9r&lr-peto'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # new
+DEBUG = env.bool("DJANGO_DEBUG", default=False) # new
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]  # new
 
 
@@ -179,3 +179,10 @@ ACCOUNT_EMAIL_REQUIRED = True  # new
 ACCOUNT_UNIQUE_EMAIL = True  # new
 
 DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"  # new
+SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+SECURE_HSTS_SECONDS = env.int("DJANGO_SECURE_HSTS_SECONDS", default=2592000) # 30 days
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS",
+default=True)
+SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
+SESSION_COOKIE_SECURE = env.bool("DJANGO_SESSION_COOKIE_SECURE", default=True)
+CSRF_COOKIE_SECURE = env.bool("DJANGO_CSRF_COOKIE_SECURE", default=True)
